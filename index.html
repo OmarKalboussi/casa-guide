@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenue à Mahdia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <span class="nav-logo">Casa · Guide</span>
+  
+  <div class="nav-utils">
+    <span id="nav-weather" class="nav-weather">...°C</span>
+    <button id="lang-toggle" class="lang-btn" onclick="toggleLanguage()">
+      <span class="lang-icon">🌐</span>
+      <span id="lang-label">FR</span>
+    </button>
+    
+    <button class="burger-btn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="#welcome" data-i18n="nav_welcome" onclick="closeMenu()">Bienvenue</a></li>
+    <li><a href="#recommendations" data-i18n="nav_rec" onclick="closeMenu()">Recommandations</a></li>
+    <li><a href="#contact" data-i18n="nav_contact" onclick="closeMenu()">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero" id="welcome">
+  <p class="hero-eyebrow" data-i18n="hero_eyebrow">Bienvenue chez vous</p>
+  <h1 data-i18n="hero_title">Votre séjour <em>parfait</em><br>commence ici</h1>
+  <p class="hero-location-badge">
+    <a id="guest-location-link" href="https://maps.app.goo.gl/goMsJKxzLRfo9AmH8" target="_blank" class="hero-location-badge">
+      📍 <span id="guest-location">La Corniche Mahdia, Tunisie</span>
+    </a>
+  </p>
+  <div class="hero-divider"></div>
+  <p class="hero-sub" data-i18n="hero_sub">De l'emblématique Skifa Kahla aux eaux cristallines du Cap Afrique, découvrez les secrets les mieux gardés de la première capitale fatimide grâce aux bons plans de votre hôte.</p>
+  <a href="#recommendations" class="hero-scroll" style="text-decoration: none; color: inherit;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+    <span data-i18n="hero_explore">Explorer</span>
+  </a>
+</div>
+
+<!-- ── RECOMMENDATIONS ── -->
+<section id="recommendations">
+  <p class="section-label" data-i18n="rec_label">Sélectionné pour vous</p>
+  <h2 class="section-title" data-i18n="rec_title">Nos recommandations à Mahdia</h2>
+  <div class="section-line"></div>
+
+  <div class="rec-tabs" role="tablist">
+    <button class="tab-btn active" role="tab" onclick="switchTab('food', this)" data-i18n="tab_food">Restaurants & Cafés</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('sights', this)" data-i18n="tab_sights">À Visiter</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('grocery', this)" data-i18n="tab_grocery">Commerces</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('sport', this)" data-i18n="tab_sport">Sport & Bien-être</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('utile', this)" data-i18n="tab_utile">Utiles</button>
+  </div>
+
+  <!-- RESTAURANTS & CAFES -->
+  <div class="tab-panel active" id="tab-food">
+    <div class="rec-grid">
+      <!-- Café El Madina -->
+      <div class="rec-card">
+        <span class="rec-icon">☕</span>
+        <p class="rec-name">Café El Madina</p>
+        <span class="rec-tag" data-i18n="elmadina_tag">Incontournable · Ambiance Fatimide</span>
+        <p class="rec-desc" data-i18n="elmadina_desc">Situé à l'entrée de la vieille ville, le Café El Médina est une adresse incontournable réputée pour sa superbe terrasse ombragée par de grands arbres centenaires.</p>
+        <div class="rec-meta">
+          <span>📍 <span data-i18n="elmadina_loc">Près de la Grande mosquée Fatimide</span></span>
+          <span>💰 10-50 TND</span>
+          <span>⏰ 09:00 – 00:00</span>
+        </div>
+        <div class="rec-links">
+          <a href="https://maps.app.goo.gl/cSHzgi3Fcb4WEwJg8" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+          <a href="https://www.facebook.com/cafeElMedina" target="_blank" title="Facebook" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+          <a href="https://www.instagram.com/cafeelmedinamahdia/" target="_blank" title="Instagram" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Restaurant L'Espadon -->
+      <div class="rec-card">
+        <span class="rec-icon">🍽️</span>
+        <p class="rec-name">RESTAURANT L'ESPADON</p>
+        <span class="rec-tag" data-i18n="espadon_tag">Poisson Frais</span>
+        <p class="rec-desc" data-i18n="espadon_desc">Cuisine méditerranéenne raffinée, élégance et convivialité : une des meilleures tables de la ville pour savourer du poisson ultra-frais.</p>
+        <div class="rec-meta">
+          <span>📍 Rond-Point l'ESPADON</span>
+          <span>💰 50 - 200 TND</span>
+          <span>⏰ 12:00 – 01:00</span>
+        </div>
+        <div class="rec-links">
+          <a href="https://maps.app.goo.gl/niA3VtigzdLvfDLi8" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+          <a href="https://www.facebook.com/restaurant.espadon.mahdia/" target="_blank" title="Facebook" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+          <a href="https://www.instagram.com/restaurant_espadon_mahdia/?hl=en" target="_blank" title="Instagram" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Nüba Beach Bar -->
+      <div class="rec-card">
+        <span class="rec-icon">🐟</span>
+        <p class="rec-name">Nüba Beach Bar</p>
+        <span class="rec-tag" data-i18n="nuba_tag">Plage · Convivial</span>
+        <p class="rec-desc" data-i18n="nuba_desc">Un endroit idyllique pour profiter du soleil et de la mer, avec une vue imprenable sur la baie de Mahdia.</p>
+        <div class="rec-meta">
+          <span>📍 Zone Touristique</span>
+          <span>💰 10 - 100 TND</span>
+          <span>⏰ 10:00 – 00:00</span>
+        </div>
+        <div class="rec-links">
+          <a href="https://maps.app.goo.gl/NYFXNfJXUMN6NLbk8" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5-2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+          <a href="https://www.facebook.com/nubabeachmahdia/" target="_blank" title="Facebook" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+          <a href="https://www.instagram.com/nubabeach/" target="_blank" title="Instagram" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Uncle Bachir -->
+      <div class="rec-card">
+        <span class="rec-icon">🥪</span>
+        <p class="rec-name">Casse-croûte uncle Bachir</p>
+        <span class="rec-tag" data-i18n="bachir_tag">Indispensable · Authentique</span>
+        <p class="rec-desc" data-i18n="bachir_desc">Petit spot très populaire réputé pour ses généreux casse-croûtes traditionnels au thon, richement garnis d'œufs, d'harissa et d'ingrédients frais.</p>
+        <div class="rec-meta">
+          <span>📍 Parcours de santé</span>
+          <span>💰 -10 TND</span>
+          <span>⏰ 06:00 – 12:00</span>
+        </div>
+        <div class="rec-links">
+          <a href="https://maps.app.goo.gl/78Zes1AZMLzerD7c9" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGHTSEEING -->
+  <div class="tab-panel" id="tab-sights">
+    <div class="rec-grid">
+      <div class="rec-card">
+        <span class="rec-icon">🏛️</span>
+        <p class="rec-name">Skifa Kahla (Bab Zouila)</p>
+        <span class="rec-tag" data-i18n="skifa_tag">Histoire · Porte Fortifiée</span>
+        <p class="rec-desc" data-i18n="skifa_desc">L'imposante porte fortifiée du Xème siècle qui marque l'entrée de la vieille Médina. Montez au sommet pour admirer une vue splendide.</p>
+        <div class="rec-meta">
+          <span>📍 Entrée Médina</span>
+          <span>🎟️ <span data-i18n="free">Gratuit</span></span>
+          <span>⏰ 24h/24</span>
+        </div>
+        <div class="rec-links">
+          <a href="https://maps.app.goo.gl/jg3rkEBqh2mKydur7" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <span class="rec-icon">🌊</span>
+        <p class="rec-name">Le Cimetière Marin & Cap Afrique</p>
+        <span class="rec-tag" data-i18n="cemetery_tag">Panorama · Émotion</span>
+        <p class="rec-desc" data-i18n="cemetery_desc">Un lieu magique et unique au monde, où les tombes d'un blanc éclatant font face à l'immensité bleu azur de la mer Méditerranée.</p>
+        <div class="rec-meta">
+          <span>📍 Cap Afrique</span>
+          <span>🎟️ <span data-i18n="free">Gratuit</span></span>
+          <span>⏰ Journée</span>
+        </div>
+        <div class="rec-links">
+          <a href="https://maps.app.goo.gl/wJsTa1bZQHYMdqJN8" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <span class="rec-icon">🏰</span>
+        <p class="rec-name">Borj El Kebir</p>
+        <span class="rec-tag" data-i18n="borj_tag">Forteresse · Culture</span>
+        <p class="rec-desc" data-i18n="borj_desc">Cette grande forteresse ottomane du XVIème siècle domine le vieux port et offre un point de vue imprenable sur le large.</p>
+        <div class="rec-meta">
+          <span>📍 Proche Cap Afrique</span>
+          <span>🎟️ ~10 TND</span>
+          <span>⏰ 09:00 – 16:00</span>
+        </div>
+        <div class="rec-links">
+          <a href="https://maps.app.goo.gl/ZHq6bbdeJKrDpvPc9" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  <!-- GROCERY -->
+  <div class="tab-panel" id="tab-grocery">
+    <div class="rec-grid">
+      <div class="rec-card">
+        <span class="rec-icon">🐟</span>
+        <p class="rec-name">Marché Central aux Poissons</p>
+        <span class="rec-tag" data-i18n="market_tag">Marché Local · Immersion</span>
+        <p class="rec-desc" data-i18n="market_desc">Vivez l'animation de la traditionnelle criée du matin. L'endroit parfait pour acheter du poisson frais à cuisiner à l'appartement.</p>
+        <div class="rec-meta">
+          <span>📍 Centre-ville</span>
+          <span>⏰ 07:00 – 13:00</span>
+        </div>
+        <div class="rec-links">
+          <a href="https://maps.app.goo.gl/eNuPL7gWDjM6GPMS6" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <span class="rec-icon">🛒</span>
+        <p class="rec-name">Magasin Général MG</p>
+        <span class="rec-tag" data-i18n="mg_tag">Supermarché · Alimentation</span>
+        <p class="rec-desc" data-i18n="mg_desc">Idéal pour toutes vos courses du quotidien, boissons fraîches, produits de beauté et snacks lors de votre installation.</p>
+        <div class="rec-meta">
+          <span>📍 Av. Habib Bourguiba</span>
+          <span>⏰ 08:30 – 21:00</span>
+        </div>
+        <div class="rec-links">
+          <a href="https://maps.app.goo.gl/ei6H55Ah4STgwqw29" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPORT & BIEN-ÊTRE -->
+  <div class="tab-panel" id="tab-sport">
+    <div class="rec-grid">
+      <div class="rec-card">
+        <span class="rec-icon">💪</span>
+        <p class="rec-name">ONE VIP GYM</p>
+        <span class="rec-tag" data-i18n="gym_tag">Salle de sport · Fitness</span>
+        <p class="rec-desc" data-i18n="gym_desc">La salle de sport la mieux notée et la plus moderne de la zone. Idéale pour garder le rythme pendant les vacances : musculation, cardio et bonne ambiance assurée.</p>
+        <div class="rec-meta">
+          <span>📍 Av. 2 Mars 1943</span>
+          <span>💰 Pass Journée dispo</span>
+          <span>⏰ 08:00 – 22:00</span>
+        </div>
+        <div class="rec-links">
+            <a href="https://maps.app.goo.gl/VeSQxjMyTaZBAuEM8" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+            <a href="https://www.facebook.com/p/ONE-VIP-GYM-61555424557929/" target="_blank" title="Facebook" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+            <a href="https://www.instagram.com/onevip_gym_mahdia?igsh=MTVleWc2MTNmb3ZiaA==" target="_blank" title="Instagram" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
+      </div>
+      
+      <div class="rec-card">
+        <span class="rec-icon">🏄</span>
+        <p class="rec-name">Paddle with us Mahdia</p>
+        <span class="rec-tag" data-i18n="paddle_tag">Sport Nautique</span>
+        <p class="rec-desc" data-i18n="paddle_desc">Sorties guidées et des balades au coucher du soleil dans des eaux cristallines, c'est l'activité idéale pour profiter de la mer tout en combinant sport et détente.</p>
+        <div class="rec-meta">
+          <span>📍 Av. Cap Africa</span>
+          <span>💰 50 TND</span>
+          <span>⏰ 08:00 – 20:00</span>
+        </div>
+        <div class="rec-links">
+            <a href="https://maps.app.goo.gl/EDeiiqkQjjXbzeRXA" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+            <a href="https://www.instagram.com/paddle.with.us.mahdia/?hl=fr" target="_blank" title="Instagram" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <span class="rec-icon">🤿</span>
+        <p class="rec-name">Club de plongée cap afrique</p>
+        <span class="rec-tag" data-i18n="dive_tag">Sport Nautique</span>
+        <p class="rec-desc" data-i18n="dive_desc">Encadré par une équipe professionnelle et passionnée, il propose des baptêmes pour débutants ainsi que des explorations sous-marines.</p>
+        <div class="rec-meta">
+          <span>📍 Rue de Borj Othmani</span>
+          <span>💰 50 - 100 TND</span>
+          <span>⏰ 08:00 – 14:00</span>
+        </div>
+        <div class="rec-links">
+            <a href="https://maps.app.goo.gl/kvZ87BrYMo2Kus9w7" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+            <a href="https://www.facebook.com/p/Cap-Afrique-Mahdia-100057501938823/" target="_blank" title="Facebook" class="social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UTILES -->
+  <div class="tab-panel" id="tab-utile">
+    <div class="rec-grid">
+      <div class="rec-card">
+        <span class="rec-icon">🩺</span>
+        <p class="rec-name">Infirmerie</p>
+        <span class="rec-tag" data-i18n="infirmary_tag">Cabinet infirmier</span>
+        <p class="rec-desc" data-i18n="infirmary_desc">Soins infirmiers de proximité, soins d'urgence légers et renouvellement de pansements.</p>
+        <div class="rec-meta">
+          <span>📍 Av. Habib Bourguiba</span>
+          <span>💰 +10 TND</span>
+          <span>⏰ 08:00 – 17:00</span>
+        </div>
+        <div class="rec-links">
+            <a href="https://maps.app.goo.gl/3jYuAMLNCJZD7FFP6" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
+      </div> 
+    
+      <div class="rec-card">
+          <span class="rec-icon">💊</span>
+          <p class="rec-name">Pharmacie Khmis</p>
+          <span class="rec-tag" data-i18n="pharmacy_tag">Pharmacie de jour</span>
+          <p class="rec-desc" data-i18n="pharmacy_desc">Pharmacie principale du centre-ville pour vos médicaments et produits parapharmaceutiques.</p>
+          <div class="rec-meta">
+            <span>📍 Av. Habib Bourguiba</span>
+            <span>💰 +10 TND</span>
+            <span>⏰ 08:00 – 19:30</span>
+          </div>
+          <div class="rec-links">
+              <a href="https://maps.app.goo.gl/DwQUN5sowv9k9ogk7" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+          </div>
+      </div>  
+
+      <div class="rec-card">
+        <span class="rec-icon">⚕️</span>
+        <p class="rec-name">Pharmacie Khalfallah Moncef</p>
+        <span class="rec-tag" data-i18n="night_pharmacy_tag">Pharmacie de Nuit</span>
+        <p class="rec-desc" data-i18n="night_pharmacy_desc">Ouverte toute la nuit pour vos besoins de santé urgents.</p>
+        <div class="rec-meta">
+          <span>📍 Rue de Borj Othmani</span>
+          <span>💰 +10 TND</span>
+          <span>⏰ 20:00 – 07:00</span>
+        </div>
+        <div class="rec-links">
+            <a href="https://maps.app.goo.gl/EvGHHbvXQNYNEYCfA" target="_blank" title="Google Maps"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></a>
+        </div>
+      </div>   
+    </div>
+  </div>
+</section>
+
+<!-- ── EMERGENCY DETAILS ── -->
+<section id="emergency">
+  <p class="section-label" style="color: #ff6b6b;" data-i18n="em_label">En cas d'urgence</p>
+  <h2 class="section-title" data-i18n="em_title">Contacts d'Urgence</h2>
+  <div class="section-line" style="background: #ff6b6b;"></div>
+
+  <div class="emergency-grid">
+    <a href="tel:197" class="emergency-card">
+      <div class="emergency-icon">计时</div>
+      <div class="emergency-info">
+        <h3 data-i18n="police">Police Secours</h3>
+        <p class="phone-number">197</p>
+      </div>
+    </a>
+    <a href="tel:198" class="emergency-card">
+      <div class="emergency-icon">🚒</div>
+      <div class="emergency-info">
+        <h3 data-i18n="fire">Protection Civile</h3>
+        <p class="phone-number">198</p>
+      </div>
+    </a>
+    <a href="tel:193" class="emergency-card">
+      <div class="emergency-icon">🛡️</div>
+      <div class="emergency-info">
+        <h3 data-i18n="guard">Garde Nationale</h3>
+        <p class="phone-number">193</p>
+      </div>
+    </a>
+    <a href="tel:190" class="emergency-card">
+      <div class="emergency-icon">🚑</div>
+      <div class="emergency-info">
+        <h3 data-i18n="samu">SAMU (Urgences)</h3>
+        <p class="phone-number">190</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <p class="section-label" data-i18n="contact_label">Un besoin particulier ?</p>
+    <h2 class="section-title" data-i18n="contact_title">Nous sommes là pour vous</h2>
+    <div class="section-line"></div>
+    <p class="contact-text" data-i18n="contact_text">Qu'il s'agisse d'un conseil local, d'un besoin dans l'appartement ou d'une question pratique, contactez-moi directement sur WhatsApp.</p>
+    <a class="wa-btn" href="https://wa.me/21658042000?text=Bonjour%2C%20je%20suis%20actuellement%20dans%20votre%20appartement%20et%20j'ai%20une%20question." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12.004 0C5.374 0 0 5.373 0 12.004c0 2.118.554 4.102 1.522 5.83L0 24l6.335-1.654A11.959 11.959 0 0012.004 24C18.63 24 24 18.627 24 12.004 24 5.373 18.63 0 12.004 0zm0 21.818a9.814 9.814 0 01-5.003-1.367l-.358-.214-3.762.984.999-3.662-.234-.374a9.816 9.816 0 01-1.504-5.181c0-5.42 4.413-9.833 9.834-9.833 5.426 0 9.834 4.413 9.834 9.833 0 5.42-4.408 9.814-9.806 9.814z"/>
+      </svg>
+      <span data-i18n="wa_btn">Discutez avec nous sur WhatsApp</span>
+    </a>
+    <p class="contact-note" data-i18n="contact_note">Réponse en quelques minutes généralement</p>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  &copy; 2026 · <span data-i18n="footer">Créé avec soin pour nos voyageurs.</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
